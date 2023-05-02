@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-const serverURL = 'http://localhost:8000';
+const serverURL = 'https://chatgpt-clone-server-production.up.railway.app';
 function App() {
   const [message, setMessage] = useState(null);
   const [prompt, setPrompt] = useState('');
