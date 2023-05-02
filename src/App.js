@@ -1,7 +1,7 @@
 import { useState, useEffect, useRef } from "react";
 import loadingImg from "./assets/img/loading.png"
-// const serverURL = 'https://chatgpt-clone-server-production.up.railway.app';
-const serverURL = 'http://localhost:8000';
+const serverURL = 'https://chatgpt-clone-server-production.up.railway.app';
+// const serverURL = 'http://localhost:8000';
 function App() {
   const messagesEndRef = useRef(null)
   const [generatingRes,setGeneratingRes] = useState(false);
