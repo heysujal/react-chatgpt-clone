@@ -4,18 +4,14 @@
   color: #fff;
   font-family: 'Open Sans', sans-serif;
 }
-
 body {
   margin: 0;
   padding: 0;
 }
-
 .App {
   display: flex;
 }
-
 .sidebar {
-
   background-color: #202123;
   display: flex;
   flex-direction: column;
@@ -23,7 +19,6 @@ body {
   height: 100vh;
   flex: 1;
 }
-
 .sidebar__newchatbtn {
   padding: 10px;
   font-size: medium;
@@ -34,33 +29,27 @@ body {
   cursor: pointer;
   text-align: left;
 }
-
 .sidebar__newchatbtn:hover {
   background-color: hsla(240, 9%, 59%, .1);
   transition-duration: 0.2s;
 }
-
 ul.history {
   list-style: none;
   padding: 10px;
   margin: 10px;
   height: 100%;
 }
-
 ul.history li {
   padding: 10px 0;
   margin: 10px;
   cursor: pointer;
 }
-
 .sidebar nav {
   border-top: 0.1px solid grey;
   padding: 10px;
   margin: 10px;
   text-align: center;
 }
-
-
 section.main {
   height: 100vh;
   background-color: #343541;
@@ -71,19 +60,30 @@ section.main {
   align-items: center;
   text-align: center;
 }
-
 .input-container {
   width: 100%;
-  /* border: 0.1px solid #8e8ea0; */
   padding: 10px;
   position: relative;
 }
-
+img.loading-img{
+  position: absolute;
+  height: 40px;
+  left: 40%;
+  top: -40px;
+  animation: rotating 1s linear infinite;
+}
+@keyframes rotating{
+  from{
+    transform: rotate(0deg);
+  }
+  to{
+    transform: rotate(360deg);
+  }
+}
 input {
   width: 100%;
   background-color: transparent;
   outline: none;
- 
   border: 1px solid white;
   border-color: #8e8ea0;
   border-radius: 5px;
@@ -94,9 +94,6 @@ input {
   rgba(0, 0, 0, 0.05) 0px 4px 6px,
   rgba(0, 0, 0, 0.05) 0px 12px 3px,
   rgba(0, 0, 0, 0.05) 0px -3px 5px;
-
-  /* font-size:16px; */
- 
 }
 #submit{
  position: absolute;
@@ -104,15 +101,16 @@ input {
  right: 0;
  cursor: pointer;
 }
-
+.bottom-section{
+  padding: 10px;
+}
 .info {
   font-size: 12px;
   opacity: .5;
-  padding: 10px;
+  margin-bottom: 0px;
 }
 .feed{
-  /* overflow: scroll; */
-  overflow-y: hidden;
+  overflow-y: visible;
   overflow-x: hidden;
   overflow-wrap: break-word;
   width: 100%;
@@ -129,9 +127,14 @@ input {
 .__chatitem{
   list-style: none;
   display: flex;
-  width: 100%;
-  flex-wrap: wrap;
-  overflow-wrap: break-word;
-  /* padding: 15px 0px 15px 30px; */
+  align-items: center;
   background-color: #444654;
+  padding-left: 50px;
+}
+.role-img{
+  height: 40px;
+  width: 40px;
+}
+.__chatitem p{
+    padding: 20px;
 }
