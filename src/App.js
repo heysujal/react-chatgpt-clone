@@ -1,5 +1,4 @@
 import { useState, useEffect, useRef } from "react";
-import loadingImg from "./assets/img/loading.png"
 const serverURL = 'https://chatgpt-clone-server-production.up.railway.app';
 // const serverURL = 'http://localhost:8000';
 function App() {
@@ -113,7 +112,7 @@ console.log(uniqueTitles);
         </ul>
         <div className="bottom-section">
           <div className="input-container">
-            <img className="loading-img" style={{display : generatingRes?'block':'none'}} src={loadingImg} alt="loading-gif"/>
+            <img className="loading-img" style={{display : generatingRes?'block':'none'}} src="/assets/img/loading.png" alt="loading-gif"/>
             <input onKeyDown={(e)=>{if(e.key==='Enter'){prompt?.trim()!='' && getMessage();}}} type="text" value={prompt} onChange={(e) => { setPrompt(e.target.value) }} placeholder="Ask a question, get something translated etc." />
             <div id="submit" onClick={prompt?.trim()!='' && getMessage}>➡️</div>
           </div>
