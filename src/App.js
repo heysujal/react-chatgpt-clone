@@ -64,7 +64,7 @@ function App() {
       });
       let data = await response.json();
       console.log(data);
-      setMessage(data.choices[0].message);
+      setMessage(data?.choices[0].message);
     } catch (error) {
       console.log(error);
     }
