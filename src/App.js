@@ -61,7 +61,7 @@ function App() {
         })
       });
       let data = await response.json();
-      console.log(data)
+      // console.log(data)
       setMessage(data?.choices[0].message);
     } catch (error) {
       setGeneratingRes(false);
@@ -113,8 +113,8 @@ useEffect(() => {
         <div className="bottom-section">
           <div className="input-container">
             <img className="loading-img" style={{display : generatingRes?'block':'none'}} src="/assets/img/loading.png" alt="loading-gif"/>
-            <input onKeyDown={(e)=>{if(e.key==='Enter'){prompt?.trim()!='' && getMessage();}}} type="text" value={prompt} onChange={(e) => { setPrompt(e.target.value) }} placeholder="Ask a question, get something translated etc." />
-            <div id="submit" onClick={prompt?.trim()!='' ? getMessage : undefined}>➡️</div>
+            <input onKeyDown={(e)=>{if(e.key==='Enter' && prompt?.trim()!=''){getMessage()}}} type="text" value={prompt} onChange={(e) => { setPrompt(e.target.value) }} placeholder="Ask a question, get something translated etc." />
+            <div id="submit" onClick={()=>{if(prompt?.trim()!=''){getMessage()}}}>➡️</div>
           </div>
           <p className="info">Free Research Preview. ChatGPT may produce inaccurate information about people, places, or facts. ChatGPT Mar 23 Version</p>
           <p className="info">Note : Answer to your prompt will be limited to approx 75 words only.</p>
