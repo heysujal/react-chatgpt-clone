@@ -61,8 +61,11 @@ function App() {
         })
       });
       let data = await response.json();
+      console.log(data)
       setMessage(data?.choices[0].message);
     } catch (error) {
+      setGeneratingRes(false);
+      alert('Rate limit reached for default-gpt-3.5-turbo');
       console.log(error);
     }
   }
