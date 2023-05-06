@@ -65,7 +65,7 @@ function App() {
       setMessage(data?.choices[0].message);
     } catch (error) {
       setGeneratingRes(false);
-      alert('Rate limit reached for default-gpt-3.5-turbo');
+      alert('Wait for 10 seconds.Rate limit reached for default-gpt-3.5-turbo');
       console.log(error);
     }
   }
