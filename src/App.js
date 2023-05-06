@@ -1,6 +1,5 @@
 import { useState, useEffect, useRef } from "react";
-const serverURL = 'https://chatgpt-clone-server-production.up.railway.app';
-// const serverURL = 'http://localhost:8000';
+const serverURL = process.env.REACT_APP_SERVER_URL || 'http://localhost:8000';
 function App() {
   const messagesEndRef = useRef(null)
   const [generatingRes,setGeneratingRes] = useState(false);
@@ -22,7 +21,7 @@ function App() {
 
 
   useEffect(() => {
-    console.log(prompt, message, currentTitle);
+    // console.log(prompt, message, currentTitle);
     if (!currentTitle && prompt && message) {
       setCurrentTitle(prompt); 
     }
@@ -38,7 +37,6 @@ function App() {
           title: currentTitle
         }])
       })
-      console.log(1);
       setPrompt('');
     }
     setGeneratingRes(false);
@@ -63,7 +61,6 @@ function App() {
         })
       });
       let data = await response.json();
-      console.log(data);
       setMessage(data?.choices[0].message);
     } catch (error) {
       console.log(error);
@@ -74,7 +71,7 @@ function App() {
     setPrompt('');
     setCurrentTitle(null);
   }
-console.log(previousChats);
+// console.log(previousChats);
 const currentChat = previousChats.filter((chat)=> chat.title===currentTitle);
 const uniqueTitles = Array.from(new Set(previousChats.map(previousChat=>previousChat.title)));
 const scrollToBottom = () => {
@@ -84,7 +81,7 @@ const scrollToBottom = () => {
 useEffect(() => {
   scrollToBottom()
 }, [currentChat]);
-console.log(uniqueTitles);
+// console.log(uniqueTitles);
   return (
     <div className="App">
       <section className="sidebar">
@@ -114,7 +111,7 @@ console.log(uniqueTitles);
           <div className="input-container">
             <img className="loading-img" style={{display : generatingRes?'block':'none'}} src="/assets/img/loading.png" alt="loading-gif"/>
             <input onKeyDown={(e)=>{if(e.key==='Enter'){prompt?.trim()!='' && getMessage();}}} type="text" value={prompt} onChange={(e) => { setPrompt(e.target.value) }} placeholder="Ask a question, get something translated etc." />
-            <div id="submit" onClick={prompt?.trim()!='' && getMessage}>➡️</div>
+            <div id="submit" onClick={prompt?.trim()!='' ? getMessage : undefined}>➡️</div>
           </div>
           <p className="info">Free Research Preview. ChatGPT may produce inaccurate information about people, places, or facts. ChatGPT Mar 23 Version</p>
           <p className="info">Note : Answer to your prompt will be limited to approx 75 words only.</p>
